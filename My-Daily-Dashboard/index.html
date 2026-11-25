@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Daily Dashboard</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+  <div class="header-content">
+
+    <div>
+      <h1>My Daily Dashboard</h1>
+      <p>Your personal home for news, sports, weather and deals.</p>
+    </div>
+
+    <div class="clock">
+      <div id="current-time">--:--:--</div>
+      <div id="current-date">Loading date...</div>
+    </div>
+
+  </div>
+</header>
+
+
+<!-- MAIN DASHBOARD -->
+
+<main>
+
+<div class="dashboard">
+
+  <!-- LEFT COLUMN -->
+
+  <div class="dashboard-column">
+
+    <!-- WEATHER -->
+
+    <section class="card">
+
+      <h2>🌤 Today's Weather</h2>
+
+      <div class="weather-grid">
+
+        <div class="weather-location">
+
+          <h3>Alameda, CA</h3>
+
+          <div class="weather-temp" id="alameda-temp">--°</div>
+
+          <div class="weather-condition" id="alameda-condition">
+            Loading weather...
+          </div>
+
+          <div class="weather-detail">
+            Feels like: <span id="alameda-feels">--</span><br>
+            High: <span id="alameda-high">--</span><br>
+            Low: <span id="alameda-low">--</span><br>
+            Rain chance: <span id="alameda-rain">--</span><br>
+            Wind: <span id="alameda-wind">--</span>
+          </div>
+
+        </div>
+
+        <div class="weather-location">
+
+          <h3>Union City, CA</h3>
+
+          <div class="weather-temp" id="union-temp">--°</div>
+
+          <div class="weather-condition" id="union-condition">
+            Loading weather...
+          </div>
+
+          <div class="weather-detail">
+            Feels like: <span id="union-feels">--</span><br>
+            High: <span id="union-high">--</span><br>
+            Low: <span id="union-low">--</span><br>
+            Rain chance: <span id="union-rain">--</span><br>
+            Wind: <span id="union-wind">--</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <p class="weather-status" id="weather-status">
+        Getting the latest weather...
+      </p>
+
+      <button class="refresh-button" onclick="updateWeather()">
+        Refresh Weather
+      </button>
+
+    </section>
+
+
+    <!-- TOP 10 DEALS -->
+
+    <section class="card">
+
+      <h2>🏷️ Top 10 Deals</h2>
+
+      <p id="deals-status" class="placeholder">
+        Loading today's deals...
+      </p>
+
+      <div id="deals-list">
+        <p class="placeholder">
+          Finding interesting bargains...
+        </p>
+      </div>
+
+      <button class="refresh-button" onclick="updateDeals()">
+        Refresh Deals
+      </button>
+
+    </section>
+
+
+    <!-- BOOKMARKS -->
+
+    <section class="card">
+
+      <h2>🔖 My Bookmarks</h2>
+
+      <p id="bookmarks-status" class="placeholder">
+        Your saved websites.
+      </p>
+
+      <div id="bookmarks-list"></div>
+
+      <div class="bookmark-form">
+
+        <input
+          type="text"
+          id="bookmark-name"
+          placeholder="Website name"
+        >
+
+        <input
+          type="url"
+          id="bookmark-url"
+          placeholder="https://example.com"
+        >
+
+        <button class="refresh-button" onclick="addBookmark()">
+          Add Bookmark
+        </button>
+
+      </div>
+
+    </section>
+
+  </div>
+
+
+  <!-- RIGHT COLUMN -->
+
+  <div class="dashboard-column">
+
+    <!-- BAY AREA SPORTS -->
+
+    <section class="card">
+
+      <h2>🏆 My Bay Area Sports</h2>
+
+      <p id="teams-status" class="placeholder">
+        Loading team information...
+      </p>
+
+      <div id="bay-area-sports">
+
+        <p>🏈 San Francisco 49ers</p>
+        <p>🏀 Golden State Warriors</p>
+        <p>⚾ San Francisco Giants</p>
+
+      </div>
+
+      <button class="refresh-button" onclick="updateTeams()">
+        Refresh Team Information
+      </button>
+
+    </section>
+
+
+    <!-- GENERAL NEWS -->
+
+    <section class="card">
+
+      <h2>📰 General News</h2>
+
+      <p id="news-status" class="placeholder">
+        Loading today's headlines...
+      </p>
+
+      <div id="news-list">
+
+        <p class="placeholder">
+          Gathering the latest news...
+        </p>
+
+      </div>
+
+      <button class="refresh-button" onclick="updateNews()">
+        Refresh News
+      </button>
+
+    </section>
+
+
+    <!-- TECHNOLOGY NEWS -->
+
+    <section class="card">
+
+      <h2>💻 Technology News</h2>
+
+      <p id="technews-status" class="placeholder">
+        Loading technology headlines...
+      </p>
+
+      <div id="technews-list">
+
+        <p class="placeholder">
+          Gathering the latest technology news...
+        </p>
+
+      </div>
+
+      <button class="refresh-button" onclick="updateTechNews()">
+        Refresh Technology News
+      </button>
+
+    </section>
+
+  </div>
+
+</div>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+  My Daily Dashboard | Your Personal Homepage
+</footer>
+
+
+<!-- JAVASCRIPT FILES -->
+
+<script src="js/clock.js" defer></script>
+<script src="js/weather.js" defer></script>
+<script src="js/teams.js" defer></script>
+<script src="js/deals.js" defer></script>
+<script src="js/news.js" defer></script>
+<script src="js/technews.js" defer></script>
+<script src="js/bookmarks.js" defer></script>
+
+</body>
+</html>

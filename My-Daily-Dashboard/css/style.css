@@ -1,0 +1,235 @@
+
+/* =================================
+   MY DAILY DASHBOARD - DARK THEME
+================================= */
+
+:root {
+  --background: #0b1220;
+  --header: #111d30;
+  --card: #172438;
+  --card-inner: #1e3048;
+  --border: #293b53;
+  --accent: #3995f7;
+  --text: #f1f5f9;
+  --muted: #9aabc0;
+  --success: #35c98b;
+}
+
+/* GLOBAL */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--background);
+  color: var(--text);
+}
+
+/* HEADER */
+
+header {
+  background: var(--header);
+  border-bottom: 1px solid var(--border);
+  padding: 28px 30px;
+}
+
+.header-content {
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+header h1 {
+  margin: 0 0 8px;
+  font-size: 27px;
+  letter-spacing: .3px;
+}
+
+header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* CLOCK */
+
+.clock {
+  text-align: right;
+}
+
+#current-time {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+#current-date {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* MAIN DASHBOARD */
+
+main {
+  max-width: 1400px;
+  margin: 28px auto;
+  padding: 0 20px;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.dashboard-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+/* CARDS */
+
+.card {
+  background: var(--card);
+  padding: 23px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  min-height: 170px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.16);
+  transition: border-color .2s, transform .2s;
+}
+
+.card:hover {
+  border-color: #42658d;
+  transform: translateY(-2px);
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 19px;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.placeholder {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* WEATHER */
+
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.weather-location {
+  background: var(--card-inner);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.weather-location h3 {
+  margin: 0 0 12px;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.weather-temp {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.weather-condition {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 5px 0 12px;
+}
+
+.weather-detail {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.weather-status {
+  font-size: 12px;
+  color: var(--success);
+  margin-top: 15px;
+}
+
+/* BUTTONS */
+
+.refresh-button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px 17px;
+  border-radius: 7px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-weight: bold;
+  transition: background .2s;
+}
+
+.refresh-button:hover {
+  background: #1976d2;
+}
+
+/* SPORTS */
+
+#bay-area-sports p {
+  color: var(--muted);
+  line-height: 1.6;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: var(--muted);
+  font-size: 13px;
+  border-top: 1px solid var(--border);
+  margin-top: 30px;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 700px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .clock {
+    text-align: left;
+  }
+
+  header {
+    padding: 22px 18px;
+  }
+
+  main {
+    padding: 0 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  .weather-grid {
+    grid-template-columns: 1fr;
+  }
+}
