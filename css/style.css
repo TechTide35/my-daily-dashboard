@@ -233,3 +233,62 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* =================================
+   ALAMEDA 7-DAY WEATHER FORECAST
+================================= */
+
+.alameda-forecast-section {
+  margin-top: 22px;
+}
+
+.alameda-forecast-section h3 {
+  font-size: 16px;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.forecast-day {
+  background: var(--card-inner);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 12px 8px;
+  text-align: center;
+  min-width: 0;
+}
+
+.forecast-date {
+  font-weight: bold;
+  color: var(--text);
+  margin-bottom: 9px;
+}
+
+.forecast-condition {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+  min-height: 38px;
+  overflow-wrap: anywhere;
+}
+
+.forecast-temperatures {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 9px;
+}
+
+/* FORECAST MOBILE LAYOUT */
+
+@media (max-width: 700px) {
+  .forecast-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
