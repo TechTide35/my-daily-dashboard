@@ -55,6 +55,61 @@ function getWeatherDescription(code) {
   return descriptions[code] || "Conditions unavailable";
 }
 
+// LOAD ALAMEDA 7-DAY FORECAST
+
+function displayAlamedaForecast(daily) {
+
+  const forecastContainer =
+    document.getElementById("alameda-forecast");
+
+  if (!forecastContainer) return;
+
+  forecastContainer.innerHTML = "";
+
+  for (let i = 0; i < daily.time.length; i++) {
+
+    const date = new Date(
+      daily.time[i] + "T12:00:00"
+    );
+
+    const dayName = date.toLocaleDateString(
+      "en-US",
+      { weekday: "short" }
+    );
+
+    const high = daily.temperature_2m_max[i];
+    const low = daily.temperature_2m_min[i];
+    const condition = getWeatherDescription(
+      daily.weather_code[i]
+    );
+
+    const forecastDay = document.createElement("div");
+    forecastDay.className = "forecast-day";
+
+    const day = document.createElement("div");
+    day.className = "forecast-date";
+    day.textContent = i === 0 ? "Today" : dayName;
+
+    const weather = document.createElement("div");
+    weather.className = "forecast-condition";
+    weather.textContent = condition;
+
+    const temperatures = document.createElement("div");
+    temperatures.className = "forecast-temperatures";
+    temperatures.textContent =
+      (high === null ? "--" : Math.round(high)) +
+      "° / " +
+      (low === null ? "--" : Math.round(low)) +
+      "°";
+
+    forecastDay.appendChild(day);
+    forecastDay.appendChild(weather);
+    forecastDay.appendChild(temperatures);
+
+    forecastContainer.appendChild(forecastDay);
+  }
+}
+
 // LOAD WEATHER FOR ONE LOCATION
 
 async function loadWeather(location) {
@@ -69,11 +124,11 @@ async function loadWeather(location) {
     latitude: location.latitude,
     longitude: location.longitude,
     current: "temperature_2m,apparent_temperature,weather_code,wind_speed_10m",
-    daily: "temperature_2m_max,temperature_2m_min,precipitation_probability_max",
+    daily: "temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code",
     temperature_unit: "fahrenheit",
     wind_speed_unit: "mph",
     timezone: "America/Los_Angeles",
-    forecast_days: "1"
+    forecast_days: "7"
   }).toString();
 
   const response = await fetch(url);
@@ -115,6 +170,12 @@ async function loadWeather(location) {
 
   document.getElementById(prefix + "-wind").textContent =
     round(data.current.wind_speed_10m) + " mph";
+
+  // DISPLAY SEVEN-DAY ALAMEDA FORECAST
+
+  if (prefix === "alameda") {
+    displayAlamedaForecast(data.daily);
+  }
 }
 
 // UPDATE BOTH WEATHER LOCATIONS
